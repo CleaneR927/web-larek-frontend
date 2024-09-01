@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#000000" />
 	<link rel="icon" href="/favicon.ico" />
-	<link rel="manifest" href="/manifest.json" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,6 +39,8 @@
 		</div>
 	</div>
 
+	<!-- Модальное окно открытия карточки -->
+
 	<div class="modal">
 		<div class="modal__container">
 			<button class="modal__close" aria-label="закрыть"></button>
@@ -59,6 +60,8 @@
 			</div>
 		</div>
 	</div>
+
+<!-- Модальное окно открытия корзины -->
 
 	<div class="modal">
 		<div class="modal__container">
@@ -95,11 +98,13 @@
 		</div>
 	</div>
 
+<!-- Модальное окно оформления заказа. Шаг №1 -->
+
 	<div class="modal">
 		<div class="modal__container">
 			<button class="modal__close" aria-label="закрыть"></button>
 			<div class="modal__content">
-				<form class="form">
+				<form class="form" name="form-order">
 					<div class="order">
 						<div class="order__field">
 							<h2 class="modal__title">Способ оплаты</h2>
@@ -121,11 +126,13 @@
 		</div>
 	</div>
 
+<!-- Модальное окно оформления заказа. Шаг №2 -->
+
 	<div class="modal">
 		<div class="modal__container">
 			<button class="modal__close" aria-label="закрыть"></button>
 			<div class="modal__content">
-				<form class="form">
+				<form class="form" name="form-contact">
 					<div class="order">
 						<label class="order__field">
 							<span class="form__label modal__title">Email</span>
@@ -144,6 +151,8 @@
 		</div>
 	</div>
 
+<!-- Модальное окно успешно оформленного заказа -->
+
 	<div class="modal">
 		<div class="modal__container">
 			<button class="modal__close" aria-label="закрыть"></button>
@@ -157,6 +166,8 @@
 		</div>
 	</div>
 
+<!-- Темплейт для заполнения данных в модальном окне успешного оформления заказа -->
+
 	<template id="success">
 		<div class="order-success">
 			<h2 class="order-success__title">Заказ оформлен</h2>
@@ -164,6 +175,8 @@
 			<button class="button order-success__close">За новыми покупками!</button>
 		</div>
 	</template>
+
+<!-- Темплейт для вывода карточки на главную страницу -->
 
 	<template id="card-catalog">
 		<button class="gallery__item card">
@@ -173,6 +186,8 @@
 			<span class="card__price">750 синапсов</span>
 		</button>
 	</template>
+
+<!-- Темплейт для заполнения данных модального окна просмотра карточки -->
 
 	<template id="card-preview">
 		<div class="card card_full">
@@ -189,6 +204,8 @@
 		</div>
 	</template>
 
+<!-- Темплейт для добавления карточки в корзину -->
+
 	<template id="card-basket">
 		<li class="basket__item card card_compact">
 			<span class="basket__item-index">1</span>
@@ -197,6 +214,8 @@
 			<button class="basket__item-delete card__button" aria-label="удалить"></button>
 		</li>
 	</template>
+
+<!-- Темплейт для заполнения данных о сумме заказа в корзине -->
 
 	<template id="basket">
 		<div class="basket">
@@ -208,6 +227,8 @@
 			</div>
 		</div>
 	</template>
+
+<!-- Темплейт для заполнения данных в модальном окне оформления заказа. Шаг №1 -->
 
 	<template id="order">
 		<form class="form" name="order">
@@ -230,6 +251,8 @@
 			</div>
 		</form>
 	</template>
+
+<!-- Темплейт для заполнения данных в модальном окне оформления заказа. Шаг №2 -->
 
 	<template id="contacts">
 		<form class="form" name="contacts">
