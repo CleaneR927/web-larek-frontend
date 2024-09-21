@@ -1,47 +1,85 @@
 // Интерфейс получения типизированных данных товара с сервера
 
-export interface iProduct {
+export interface IProduct {
   id: string;
   description: string;
   image: string;
   title: string;
   category: string;
-  price: number;
+  price: number | null;
+  selected: boolean;
+}
+
+export interface IApiResponse {
+  items: IProduct[];
 }
 
 // Интерфейс типизированных данных покупателя, получаемых при оформлении заказа
 
-export interface iCustomer {
+export interface ICustomer {
+  payment: string;
   address: string;
   email: string;
-  telephone: string;
+  phone: string;
+  items: string[];
+  total: number;
 }
 
-// Интерфейс типизированных данных массива товаров 
+// Интерфейс типизированных данных корзины покупок
 
-export interface iProductsData {
-  productCards: iProduct[];
-  previewCardById: string | null ;
-  addProductCard(product: iProduct): void;
-  deleteProduct(cardId: string, notification: Function | null): void;
-  getProductCard(cardId: string): iProduct;
+export interface IBasket {
+	items: HTMLElement[];
+	totalCost: number;
 }
 
-export interface iCustomerData {
-  setCustomerInfo(customerData: iCustomer): void;
-  checkValidation(data: Record<keyof TCustomerPay, string>): boolean;
-  checkValidation(data: Record<keyof TCustomerInfo, string>): boolean;
+// Интерфейс типизированных данных результата заказа
+
+export interface IOrderResult {
+  total: number;
+}
+
+// Интерфейс типизированных данных формы оформления заказа
+
+export interface IAppData {
+  basket: IProduct[];
+  products: IProduct[];
+  customerOrder: ICustomer;
+  formErrors: Partial<Record<keyof CustomerForm, string>>;
+  addToBasket(product: IProduct): void;
+  removeFromBasket(product: IProduct): void;
+  clearBasket(): void;
+  getBasketAmount(): number;
+  setItems(): void;
+  setOrderField(field: keyof CustomerForm, value: string): void;
+  validateContacts(): boolean;
+  validateOrder(): boolean;
+  updateOrder(): boolean;
+  setStore(items: IProduct[]): void;
+  resetSelected(): void;
+}
+
+// Интерфейс работы с API
+
+export interface IApi {
+ baseUrl: string;
+ get<T>(uri: string): Promise<T>;
+ post(uri: string, data: object): Promise<object>;
+}
+
+// Интерфейс для работы с модальными окнами
+export interface IModalData {
+	content: HTMLElement;
 }
 
 // Список переиспользуемых типов под компоненты приложения
 
- export type TProductCard = Omit<iProduct, 'description'>;
+export type CustomerForm = Omit<ICustomer, 'items' | 'total'>;
 
- export type TProductInfoCard = Omit<iProduct, 'id'>;
+export type CustomerOrder = Pick<ICustomer, 'payment' | 'address'>;
 
- export type TProductFromCart = Pick<iProduct, 'title' | 'price'>;
+export type CustomerContacts = Pick<ICustomer, 'email' | 'phone'>;
 
- export type TCustomerPay = Pick<iCustomer, 'address'>;
+export type ApiPostMethods = 'POST' | 'PUT' | 'DELETE';
 
- export type TCustomerInfo = Pick<iCustomer, 'telephone' | 'email'>;
+export type FormErrors = Partial<Record<keyof CustomerForm, string>>;
 
