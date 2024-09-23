@@ -7,7 +7,7 @@ interface IFormDataValidState {
   errors: string[];
 }
 
-export class FormDataValid<T> extends Component<IFormDataValidState> {
+export class Form<T> extends Component<IFormDataValidState> {
 	protected _submitButton: HTMLButtonElement;
 	protected _errorsData: HTMLElement;
 
@@ -31,7 +31,7 @@ export class FormDataValid<T> extends Component<IFormDataValidState> {
 	}
 
 	protected onInputChange(field: keyof T, value: string) {
-    this.events.emit('orderInput:change', {
+    this.events.emit(`${this.container.name}.${String(field)}:change`, {
       field,
       value,
     })

@@ -10,10 +10,6 @@ export interface IProduct {
   selected: boolean;
 }
 
-export interface IApiResponse {
-  items: IProduct[];
-}
-
 // Интерфейс типизированных данных покупателя, получаемых при оформлении заказа
 
 export interface ICustomer {
@@ -79,7 +75,7 @@ export type CustomerOrder = Pick<ICustomer, 'payment' | 'address'>;
 
 export type CustomerContacts = Pick<ICustomer, 'email' | 'phone'>;
 
-export type ApiPostMethods = 'POST' | 'PUT' | 'DELETE';
+export type ApiPostMethods = 'POST' | 'PUT';
 
 export type FormErrors = Partial<Record<keyof CustomerForm, string>>;
 

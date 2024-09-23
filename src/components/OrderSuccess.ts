@@ -1,12 +1,12 @@
-import { handlePrice } from "../utils/utils";
-import { Component } from "./base/Component";
+import { handlePrice } from '../utils/utils';
+import { Component } from './base/Component';
 
 interface IOrderSuccess {
-	onClick: (event: MouseEvent) => void
+	onClick: (event: MouseEvent) => void;
 }
 
 export interface ISuccess {
-  total: number;
+	total: number;
 }
 
 export class OrderSuccess extends Component<ISuccess> {
@@ -16,17 +16,17 @@ export class OrderSuccess extends Component<ISuccess> {
 	constructor(protected container: HTMLFormElement, action?: IOrderSuccess) {
 		super(container);
 
-		this._total= container.querySelector('.order-success__description');
+		this._total = container.querySelector('.order-success__description');
 		this._closeButton = container.querySelector('.order-success__close');
 
 		if (action?.onClick) {
 			if (this._closeButton) {
-        this._closeButton.addEventListener('click', action.onClick)
-      }
+				this._closeButton.addEventListener('click', action.onClick);
+			}
 		}
 	}
 
 	set total(value: number) {
-		this._total.textContent = `Списано: ` + handlePrice(value) + ` синапсов`
+		this._total.textContent = `Списано: ` + handlePrice(value) + ` синапсов`;
 	}
 }

@@ -34,13 +34,4 @@ export class Basket extends Component<IBasket> {
 	disableButton() {
     this._buttonSubmit.disabled = true
   }
-
-	updateIndex() {
-    Array.from(this._listItems.children).forEach(
-      (item, index) =>
-      (item.querySelector(`.basket__item-index`)!.textContent = (
-        index + 1
-      ).toString())
-    );
-  }
 }
