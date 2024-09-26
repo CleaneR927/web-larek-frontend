@@ -148,10 +148,9 @@ events.on('basket:delete', (item: IProduct) => {
 	}
 });
 
-
 // Обновление корзины по событию изменения контента в ней
 events.on('cardInBasket: change', () => {
-	appData.basket.map((item, index) => {
+	const basketItems = appData.basket.map((item, index) => {
 		const productItem = new ItemBasket(cloneTemplate(cardBasketTemplate), {
 			onClick: () => events.emit('basket:delete', item),
 		});
@@ -161,6 +160,10 @@ events.on('cardInBasket: change', () => {
 			index: index + 1,
 		});
 	});
+	basket.render({
+		items: basketItems,
+		totalCost: appData.getTotalBasketPrice(),
+	})
 })
 
 // Оформить заказ по событию сабмита

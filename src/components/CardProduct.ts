@@ -64,7 +64,7 @@ export class CardProduct extends Component<IProduct> {
 		const value = price ? handlePrice(price) + ' синапсов' : 'Бесценно';
     this.setText(this._cardPrice, value);
 		if (this._cardButton && !price) {
-			this._cardButton.disabled = true;
+			this.setDisabled(this._cardButton, true);
 		}
 	}
 
@@ -114,6 +114,6 @@ export class CardItemPreview extends CardProduct {
 	}
 
 	set description(value: string) {
-		this._description.textContent = value;
+		this.setText(this._description, value);
 	}
 }

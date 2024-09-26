@@ -41,7 +41,7 @@ export class UserOrderDetails extends Form<CustomerOrder> {
 	}
 
 	disableButtons() {
-		this._paymentCash.classList.remove('button_alt-active');
-		this._paymentCard.classList.remove('button_alt-active');
+		this.toggleClass(this._paymentCash, 'button_alt-active', false);
+		this.toggleClass(this._paymentCard, 'button_alt-active', false);
 	}
 }

@@ -1,4 +1,4 @@
-import { IBasket } from "../types";
+import { IBasket, IProduct } from "../types";
 import { handlePrice } from "../utils/utils";
 import { Component } from "./base/Component";
 import { IEvents } from "./base/EventEmitter";
@@ -23,15 +23,17 @@ export class Basket extends Component<IBasket> {
 	}
 
 	set totalCost(totalCost: number) {
-    this._totalPrice.textContent = handlePrice(totalCost) + ' синапсов';
+		this.setText(this._totalPrice, `Общая стоимость: ` + handlePrice(totalCost) + ` синапсов`);
   }
 
 	set items(items: HTMLElement[]) {
     this._listItems.replaceChildren(...items);
-    this._buttonSubmit.disabled = items.length ? false : true;
+		this.setDisabled(this._buttonSubmit, items.length ? false : true);
   }
 
+	
+
 	disableButton() {
-    this._buttonSubmit.disabled = true
+		this.setDisabled(this._buttonSubmit, true);
   }
 }

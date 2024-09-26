@@ -33,14 +33,14 @@ export class ItemBasket extends Component<IProductBasket> {
 	}
 
 	set title(value: string) {
-		this._titleItem.textContent = value;
+		this.setText(this._titleItem, value);
 	}
 
 	set index(value: number) {
-		this._indexItem.textContent = value.toString();
+		this.setText(this._indexItem, value.toString());
 	}
 
 	set price(value: number) {
-		this._priceItem.textContent = handlePrice(value) + ' синапсов';
+		this.setText(this._priceItem, handlePrice(value) + ' синапсов');
 	}
 }

@@ -27,6 +27,6 @@ export class OrderSuccess extends Component<ISuccess> {
 	}
 
 	set total(value: number) {
-		this._total.textContent = `Списано: ` + handlePrice(value) + ` синапсов`;
+		this.setText(this._total, `Списано: ` + handlePrice(value) + ` синапсов`);
 	}
 }
