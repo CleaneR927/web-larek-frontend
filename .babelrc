@@ -1,11 +1,12 @@
 {
-  "plugins": ["@babel/syntax-dynamic-import"],
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "modules": "auto"
-      }
-    ]
-  ]
+	"plugins": ["@babel/plugin-syntax-dynamic-import"],
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"modules": "auto"
+			},
+			"@babel/preset-typescript"
+		]
+	]
 }
