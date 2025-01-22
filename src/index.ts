@@ -62,14 +62,15 @@ const success = new OrderSuccess(cloneTemplate(successTemplate), {
 });
 
 // Запрос серверу на получение карточек
-baseApi
-api.getProducts()
-.then((products: IProduct[]) => {
-	appData.setProducts(products);
-})
-.catch((error) => {
-	console.log(`Ошибка в получении данных с сервера:`, error);
-});
+// baseApi
+api
+	.getProducts()
+	.then((products: IProduct[]) => {
+		appData.setProducts(products);
+	})
+	.catch((error) => {
+		console.log(`Ошибка в получении данных с сервера:`, error);
+	});
 
 // Вывод карточек на страницу после получения ответа от сервера и появления события
 events.on('cards:change', () => {
@@ -163,8 +164,8 @@ events.on('cardInBasket: change', () => {
 	basket.render({
 		items: basketItems,
 		totalCost: appData.getTotalBasketPrice(),
-	})
-})
+	});
+});
 
 // Оформить заказ по событию сабмита
 events.on('basket:submit', () => {
@@ -253,3 +254,5 @@ events.on('modal:close', () => {
 	homePage.lockedScroll = false;
 	appData.updateOrder();
 });
+
+console.log(`API_ORIGIN: ${process.env.API_ORIGIN}`);
